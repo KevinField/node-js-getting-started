@@ -28,7 +28,7 @@ app.get('/primeFactors', function(request, response) {
 		return;		
 	}
 	for (var candidate = 2, cur = num; num > 1; candidate++) {
-		for (; num % candidate == 0; n /= candidate) {
+		for (; num % candidate == 0; num /= candidate) {
 			decomp.push(candidate);
 		}
 	}
