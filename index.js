@@ -9,8 +9,8 @@ app.get('/', function(request, response) {
   var result = ''
   var times = process.env.TIMES || 5
   for (i=0; i < times; i++)
-    result += faces();
-  response.send('<h1>Hello Yose</h1><p><a href="https://github.com/KevinField/node-js-getting-started/#readme" id="repository-link">my repo</a></p><pre>'+result+'</pre>');
+    result += faces() + '\n';
+  response.send('<h1>Hello Yose</h1><p><a href="https://github.com/KevinField/node-js-getting-started/#readme" id="repository-link">my repo</a></p><pre>Some faces:\n'+result+'</pre>');
 });
 
 app.get('/ping', function(request, response) {
