@@ -16,9 +16,13 @@ app.get('/ping', function(request, response) {
 
 app.get('/primeFactors', function(request, response) {
 	response.writeHead(200, { 'Content-Type': 'application/json'});
-	var responses = [];
-	while (request.query.number.length) {
-		var num = request.query.number.shift(),
+	var responses = [],
+		numbers = request.query.number;
+	if (!Array.isArray(numbers)) {
+		numbers = [numbers];
+	}
+	while (numbers.length) {
+		var num = numbers.shift(),
 			decomp = [];
 		if (isNaN(num) || typeof(parseInt(num)) !== 'number') {
 			responses.push(
