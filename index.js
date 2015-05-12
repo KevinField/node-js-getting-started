@@ -27,6 +27,15 @@ app.get('/primeFactors', function(request, response) {
 		));
 		return;		
 	}
+	if (parseInt(num) > 1000000) {
+		response.end(JSON.stringify(
+			{
+				"number" : num,
+				"error" : "too big number (>1e6)"
+			}
+		));
+		return;	
+	}
 	for (var candidate = 2, cur = num; cur > 1; candidate++) {
 		for (; cur % candidate == 0; cur /= candidate) {
 			decomp.push(candidate);
