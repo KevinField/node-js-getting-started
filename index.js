@@ -16,43 +16,44 @@ app.get('/ping', function(request, response) {
 
 app.get('/primeFactors', function(request, response) {
 	response.writeHead(200, { 'Content-Type': 'application/json'});
-	var responses = [],
-		numbers = request.query.number;
-	if (!Array.isArray(numbers)) {
-		numbers = [numbers];
-	}
-	while (numbers.length) {
-		var num = numbers.shift(),
-			decomp = [];
+	var makeResponse = function(num) {
+		var decomp = [];
 		if (isNaN(num) || typeof(parseInt(num)) !== 'number') {
-			responses.push(
+			return (
 				{
 					"number" : num,
 					"error" : "not a number"
 				}
 			);
-			continue;		
 		}
 		if (parseInt(num) > 1000000) {
-			response.push(
+			return (
 				{
 					"number" : num,
 					"error" : "too big number (>1e6)"
 				}
 			);
-			continue;
 		}
 		for (var candidate = 2, cur = num; cur > 1; candidate++) {
 			for (; cur % candidate == 0; cur /= candidate) {
 				decomp.push(candidate);
 			}
 		}
-		responses.push(
+		return (
 			{
 				"number" : num,
 				"decomposition" : decomp
 			}
 		);
+	};
+	var responses = [],
+		numbers = request.query.number;
+	if (!Array.isArray(numbers)) {
+		response.end(JSON.stringify(makeResponse(numbers)));
+		return;
+	}
+	while (numbers.length) {
+		responses.push(makeResponse(numbers.shift()));
 	}
 	response.end(JSON.stringify(responses));
 });
