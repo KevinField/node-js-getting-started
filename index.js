@@ -1,11 +1,12 @@
 var express = require('express');
+var faces = require("cool-ascii-faces");
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
-  response.send('<h1>Hello Yose</h1><p><a href="https://github.com/KevinField/node-js-getting-started/#readme" id="repository-link">my repo</a></p>');
+  response.send('<h1>Hello Yose</h1><p><a href="https://github.com/KevinField/node-js-getting-started/#readme" id="repository-link">my repo</a></p><pre>'+faces()+'</pre>');
 });
 
 app.get('/ping', function(request, response) {
