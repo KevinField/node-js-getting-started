@@ -18,7 +18,7 @@ app.get('/primeFactors', function(request, response) {
 	response.writeHead(200, { 'Content-Type': 'application/json'});
 	var responses = [];
 	while (request.query.number.length) {
-		var num = request.query.number.pop(),
+		var num = request.query.number.shift(),
 			decomp = [];
 		if (isNaN(num) || typeof(parseInt(num)) !== 'number') {
 			responses.push(
