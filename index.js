@@ -58,6 +58,13 @@ app.get('/primeFactors', function(request, response) {
 	response.end(JSON.stringify(responses));
 });
 
+app.get('/primeFactors/ui',function(req, resp){
+	resp.end("<h1 id='title'>THE FOR(U)M</h1>"
+		+"<p id='invitation'>Please fill it out.</p>"
+		+"<form action='/primeFactors'><input id='number' type='number' name='number'/>"
+		+"<button id='go'>Go</button></form>");
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
