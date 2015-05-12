@@ -27,8 +27,10 @@ app.get('/primeFactors', function(request, response) {
 		));
 		return;		
 	}
-	for (var cur=num; cur > 1; cur/=2) {
-		decomp.push(2);
+	for (var candidate = 2, cur = num; num > 1; candidate++) {
+		for (; num % candidate == 0; n /= candidate) {
+			decomp.push(candidate);
+		}
 	}
     response.end(JSON.stringify(
 		{
