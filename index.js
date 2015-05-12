@@ -13,6 +13,22 @@ app.get('/ping', function(request, response) {
     response.end(JSON.stringify({'alive':true}));
 });
 
+
+app.get('/primeFactors', function(request, response) {
+	response.writeHead(200, { 'Content-Type': 'application/json'});
+	var num = request.query.number,
+		decomp = [];
+	for (var cur=num; cur > 1; cur/=2) {
+		decomp.push(2);
+	}
+    response.end(JSON.stringify(
+		{
+			"number" : num,
+			"decomposition" : decomp
+		}
+	));
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
