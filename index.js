@@ -18,6 +18,15 @@ app.get('/primeFactors', function(request, response) {
 	response.writeHead(200, { 'Content-Type': 'application/json'});
 	var num = request.query.number,
 		decomp = [];
+	if (isNaN(num) || typeof(num) !== 'number') {
+		response.end(JSON.stringify(
+			{
+				"number" : num,
+				"error" : "not a number"
+			}
+		));
+		return;		
+	}
 	for (var cur=num; cur > 1; cur/=2) {
 		decomp.push(2);
 	}
