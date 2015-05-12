@@ -16,37 +16,41 @@ app.get('/ping', function(request, response) {
 
 app.get('/primeFactors', function(request, response) {
 	response.writeHead(200, { 'Content-Type': 'application/json'});
-	var num = request.query.number,
-		decomp = [];
-	if (isNaN(num) || typeof(parseInt(num)) !== 'number') {
-		response.end(JSON.stringify(
+	var responses = [];
+	while (request.query.number.length) {
+		var num = request.query.number.pop(),
+			decomp = [];
+		if (isNaN(num) || typeof(parseInt(num)) !== 'number') {
+			responses.push(
+				{
+					"number" : num,
+					"error" : "not a number"
+				}
+			);
+			continue;		
+		}
+		if (parseInt(num) > 1000000) {
+			response.push(
+				{
+					"number" : num,
+					"error" : "too big number (>1e6)"
+				}
+			);
+			continue;
+		}
+		for (var candidate = 2, cur = num; cur > 1; candidate++) {
+			for (; cur % candidate == 0; cur /= candidate) {
+				decomp.push(candidate);
+			}
+		}
+		responses.push(
 			{
 				"number" : num,
-				"error" : "not a number"
+				"decomposition" : decomp
 			}
-		));
-		return;		
+		);
 	}
-	if (parseInt(num) > 1000000) {
-		response.end(JSON.stringify(
-			{
-				"number" : num,
-				"error" : "too big number (>1e6)"
-			}
-		));
-		return;	
-	}
-	for (var candidate = 2, cur = num; cur > 1; candidate++) {
-		for (; cur % candidate == 0; cur /= candidate) {
-			decomp.push(candidate);
-		}
-	}
-    response.end(JSON.stringify(
-		{
-			"number" : num,
-			"decomposition" : decomp
-		}
-	));
+	response.end(JSON.stringify(responses));
 });
 
 app.listen(app.get('port'), function() {
