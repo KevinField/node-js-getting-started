@@ -31,7 +31,7 @@ var dummy = function(){
 							_('result').innerHTML = '<h3>' + resp.error + '</h3>';
 							return;
 						}
-						_('result').innerHTML = resp.decomposition;
+						_('result').innerHTML = _('number').value + ' = ' + resp.decomposition;
 						return;
 					}
 					_('result').innerHTML = '<h3>Error: Server status code ' + req.status + '</h3>';
