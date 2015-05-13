@@ -40,6 +40,13 @@ app.get('/primeFactors', function(request, response) {
 					"error" : "too big number (>1e6)"
 				}
 			);
+		} else if (parseInt(num) <= 1) {
+			return (
+				{
+					"number" : num,
+					"error" : num + " is not an integer > 1"
+				}
+			);
 		}
 		for (var candidate = 2, cur = num; cur > 1; candidate++) {
 			for (; cur % candidate == 0; cur /= candidate) {
