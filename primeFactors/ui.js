@@ -21,6 +21,9 @@ var dummy = function(){
 						} else {
 							resp = JSON.parse(req.responseText);
 						}
+						if (resp.error === 'not a number') {
+							resp.error = _('number').value + ' is not a number';
+						}
 						if (!resp.error && !resp.decomposition) { // probably error
 							resp = {
 								error: 'An uncaught error occurred: no decomposition',
