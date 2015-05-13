@@ -1,6 +1,8 @@
 var express = require('express');
 var faces = require("cool-ascii-faces");
+var serveStatic = require('serve-static')
 var app = express();
+
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
@@ -64,11 +66,13 @@ app.get('/primeFactors', function(request, response) {
 });
 
 app.get('/primeFactors/ui',function(req, resp){
-	resp.send("<h1 id='title'>THE FOR(U)M</h1>"
+	resp.send("<!DOCTYPE html5><head><title>AJAX!</title></head><body><h1 id='title'>THE FOR(U)M</h1>"
 		+"<p id='invitation'>Please fill it out.</p>"
-		+"<form action='/primeFactors'><input id='number' type='number' name='number'/>"
-		+"<button id='go'>Go</button></form>");
+		+"<input id='number' type='number' name='number'/>"
+		+"<button id='go'>Go</button><span id='result'/><script src='/primeFactors/ui.js'></script></body>");
 });
+
+app.use(serveStatic(__dirname));
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
