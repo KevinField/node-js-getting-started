@@ -8,7 +8,7 @@ var dummy = function(){
 	window.load = function(){
 		var checkBombs = function (e) {
 			var et = e.target;
-			if (et.className.indexOf('bomb')!==-1) {
+			if (et.classList.contains('bomb')) {
 				et.className += ' lost';
 			} else {
 				et.className += ' safe';
@@ -20,7 +20,7 @@ var dummy = function(){
 					for (var j=p-1; j<=p+1; j++) {
 						var cell = _('cell-' + i + 'x' + j);
 						if (cell) {
-							if (cell.className.indexOf('bomb')!==-1) {
+							if (cell.classList.contains('bomb')) {
 								bombs++;
 							}
 						}
@@ -28,6 +28,18 @@ var dummy = function(){
 				}
 				if (bombs) {
 					et.textContent = bombs;
+					et.className += ' keepwhite';
+				} else {
+					for (var i=n-1; i<=n+1; i++) {
+						for (var j=p-1; j<=p+1; j++) {
+							var cell = _('cell-' + i + 'x' + j);
+							if (cell) {
+								if (!cell.classList.contains('safe')) {
+									checkBombs({target:cell});
+								}
+							}
+						}
+					}
 				}
 			}
 		};

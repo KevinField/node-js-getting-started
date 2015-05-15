@@ -8,8 +8,11 @@ span {
     vertical-align: middle;
 }
 .safe {
-	background-color: grey;
+	background-color: lightgrey;
 }
 .lost {
 	background-color: red;
+}
+.safe.keepwhite {
+	background-color: white;
 }
