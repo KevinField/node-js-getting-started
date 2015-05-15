@@ -26,7 +26,9 @@ var dummy = function(){
 						}
 					}
 				}
-				et.textContent = bombs;
+				if (bombs) {
+					et.textContent = bombs;
+				}
 			}
 		};
 		var grid = document.grid;
