@@ -1,11 +1,9 @@
 var express = require('express');
 var faces = require("cool-ascii-faces");
-var serveStatic = require('serve-static')
 var app = express();
 
 
 app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
   var result = ''
@@ -87,7 +85,9 @@ app.get('/primeFactors/ui',function(req, resp){
 		+"<script src='/primeFactors/ui.js'></script></body>");
 });
 
-app.use(serveStatic(__dirname));
+app.get('/primeFactors/*', function(req, res){
+    res.sendfile(req.params[0], {root: './primeFactors/'});
+});
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
