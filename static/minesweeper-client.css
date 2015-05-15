@@ -7,3 +7,9 @@ span {
     text-align: center;
     vertical-align: middle;
 }
+.safe {
+	background-color: grey;
+}
+.lost {
+	background-color: red;
+}
