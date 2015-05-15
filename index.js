@@ -80,7 +80,7 @@ app.get('/primeFactors/ui',function(req, resp){
 	resp.send("<!DOCTYPE html5><head><title>AJAX!</title></head><body><h1 id='title'>THE FOR(U)M</h1>"
 		+"<p id='invitation'>Please fill it out.</p>"
 		+"<input id='number' type='text' name='number'/>"
-		+"<button id='go'>Go</button><span id='result'/><ol id='results'/>"
+		+"<button id='go'>Go</button><span id='result'></span><ol id='results'></ol>"
 		+"<script src='/primeFactors/ui.js'></script></body>");
 });
 
