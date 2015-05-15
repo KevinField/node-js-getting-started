@@ -6,9 +6,27 @@ var dummy = function(){
 	Element.prototype.$ = function(selector) { return this.querySelector(selector); }
 	Element.prototype.$$ = function(selector) { return this.querySelectorAll(selector); }
 	window.load = function(){
-		var checkBomb = function (e) {
-			if (e.target.className === 'bomb') {
-				e.target.className += ' lost';
+		var checkBombs = function (e) {
+			var et = e.target;
+			if (et.className.indexOf('bomb')!==-1) {
+				et.className += ' lost';
+			} else {
+				et.className += ' safe';
+				var ident = et.id.match(/cell-([0-9]+)x([0-9]+)/);
+				var n = parseInt(ident[1], 10),
+					p = parseInt(ident[2], 10),
+					bombs = 0;
+				for (var i=n-1; i<=n+1; i++) {
+					for (var j=p-1; j<=p+1; j++) {
+						var cell = _('cell-' + i + 'x' + j);
+						if (cell) {
+							if (cell.className.indexOf('bomb')!==-1) {
+								bombs++;
+							}
+						}
+					}
+				}
+				et.textContent = bombs;
 			}
 		};
 		var grid = document.grid;
@@ -19,9 +37,22 @@ var dummy = function(){
 				var cell = _("cell-" + n + "x" + p);
 				if (cell) {
 					cell.className = row[p-1];
-					cell.addEventListener('click',checkBomb);
+					cell.addEventListener('click',checkBombs);
 				}
 			}
 		}
 	};
+	window.addEventListener('DOMContentLoaded',function(){
+		document.grid =    [
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+			];
+			load();
+	});
 }();

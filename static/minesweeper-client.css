@@ -1,0 +1,9 @@
+span {
+    border: 1px solid #000;
+    width: 30px;
+    height: 30px;
+    display: -moz-grid;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+}
