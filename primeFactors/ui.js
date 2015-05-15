@@ -16,9 +16,9 @@ var dummy = function(){
 							processResult = function (resp) {
 								if (resp.error) {
 									if (resp.error === 'not a number') {
-										resp.error = resp.number + ' is not a number';
+										return resp.number + ' is not a number';
 									}
-									return '<h3>' + resp.error + '</h3>';
+									return resp.error;
 								}
 								return resp.number + ' = ' + resp.decomposition.join(' x ');
 							};
