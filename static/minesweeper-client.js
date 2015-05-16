@@ -63,17 +63,5 @@ var dummy = function(){
 		newElement.appendChild(docfrag);
 		_('grid').parentNode.replaceChild(newElement, _('grid'));
 	};
-	window.addEventListener('DOMContentLoaded',function(){
-		document.grid =    [
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-			];
-			load();
-	});
+
 }();
