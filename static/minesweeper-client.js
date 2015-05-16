@@ -43,30 +43,29 @@ var dummy = function(){
 				}
 			}
 		};
-		var grid = document.grid;
+		var grid = document.grid,
+			docfrag = document.createDocumentFragment();
 		if (!grid) return;
 		for (var n=1; n<=grid.length; n++) {
 			var row = grid[n-1];
 			for (var p=1; p<=row.length; p++) {
-				var cell = _("cell-" + n + "x" + p);
-				if (cell) {
-					cell.className = row[p-1];
-					cell.addEventListener('click',checkBombs);
-				}
+				var cell = document.createElement('span');
+				cell.id = "cell-" + n + "x" + p;
+				cell.className = row[p-1];
+				cell.addEventListener('click',checkBombs);
+				docfrag.appendChild(cell);
 			}
+			docfrag.appendChild(document.createElement('br'));
 		}
+		_('grid').innerHTML='';
+		_('grid').appendChild(docfrag);
 	};
 	window.addEventListener('DOMContentLoaded',function(){
-		document.grid =    [
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-			];
-			load();
+		document.grid = [
+		    ['bomb' , 'empty', 'empty'],
+		    ['empty', 'empty', 'empty'],
+		    ['empty', 'empty', 'bomb' ]
+    	];
+		load();
 	});
 }();
