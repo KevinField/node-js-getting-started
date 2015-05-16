@@ -4,5 +4,5 @@ module.exports = {'/primeFactors/ui': function(req, res){
 		+"<p id='invitation'>Please fill it out.</p>"
 		+"<input id='number' type='text' name='number'/>"
 		+"<button id='go'>Go</button><span id='result'></span><ol id='results'></ol>"
-			+"<script src='/static/primeFactors-ui-client.js'></script></body>");
+		+"<script src='/static/primeFactors-ui-client.js'></script></body>");
 }};
