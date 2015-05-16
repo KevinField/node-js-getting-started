@@ -73,8 +73,8 @@ var dummy = function(){
 	};
 	window.addEventListener('DOMContentLoaded',function(){
 		document.grid = [];
-		var rows = Math.round(Math.random()*12)+3,
-			cols = Math.round(Math.random()*12)+3;
+		var rows = 8,
+			cols = 8;
 		for (var i=0; i<rows; i++) {
 			var row = [];
 			for (var j=0; j<cols; j++) {
