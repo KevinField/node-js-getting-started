@@ -20,7 +20,7 @@ var dummy = function(){
 					for (var j=p-1; j<=p+1; j++) {
 						var cell = _('cell-' + i + 'x' + j);
 						if (cell) {
-							if (et.className.indexOf('bomb')!==-1) {
+							if (cell.className.indexOf('bomb')!==-1) {
 								bombs++;
 							}
 						}
@@ -33,13 +33,13 @@ var dummy = function(){
 					var gridHeight = document.grid.length,
 						gridWidth = document.grid[0].length;
 					for (var i=n-1; i<=n+1; i++) {
+						if (i < 1 || i > gridHeight) continue;
 						for (var j=p-1; j<=p+1; j++) {
-							if (p < 1 || p > gridWidth) continue;
-							if (n < 1 || n > gridHeight) continue;
+							if (j < 1 || j > gridWidth) continue;
 							if (p===j && n===i) continue;
 							var cell = _('cell-' + i + 'x' + j);
 							if (cell) {
-								if (et.className.indexOf('safe')===-1) {
+								if (cell.className.indexOf('safe')===-1) {
 									checkBombs({target:cell});
 								}
 							}
@@ -72,7 +72,7 @@ var dummy = function(){
 		}
 	};
 	window.addEventListener('DOMContentLoaded',function(){
-		return;
+		//return;
 		document.grid =    [
 				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
 				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
