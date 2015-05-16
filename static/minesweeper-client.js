@@ -8,7 +8,7 @@ var dummy = function(){
 	window.load = function(){
 		var checkBombs = function (e) {
 			var et = e.target;
-			if (et.classList.contains('bomb')) {
+			if (et.className.indexOf('bomb')!==-1) {
 				et.className += ' lost';
 			} else {
 				et.className += ' safe';
