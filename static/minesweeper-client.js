@@ -20,7 +20,7 @@ var dummy = function(){
 					for (var j=p-1; j<=p+1; j++) {
 						var cell = _('cell-' + i + 'x' + j);
 						if (cell) {
-							if (cell.classList.contains('bomb')) {
+							if (et.className.indexOf('bomb')!==-1) {
 								bombs++;
 							}
 						}
@@ -39,7 +39,7 @@ var dummy = function(){
 							if (p===j && n===i) continue;
 							var cell = _('cell-' + i + 'x' + j);
 							if (cell) {
-								if (!cell.classList.contains('safe')) {
+								if (et.className.indexOf('safe')===-1) {
 									checkBombs({target:cell});
 								}
 							}
