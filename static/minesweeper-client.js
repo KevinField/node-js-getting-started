@@ -9,7 +9,7 @@ var dummy = function(){
 		var checkBombs = function (e) {
 			var et = e.target;
 			if (et.className.indexOf('bomb')!==-1) {
-				et.className += ' lost';
+				et.className += _('suspect-mode').checked ? ' suspect' : ' lost';
 			} else {
 				et.className += ' safe';
 				var ident = et.id.match(/cell-([0-9]+)x([0-9]+)/);

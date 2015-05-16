@@ -10,9 +10,12 @@ span {
 .safe {
 	background-color: lightgrey;
 }
+.suspect {
+	background-color: yellow;
+}
 .lost {
 	background-color: red;
 }
-.safe.keepwhite {
+.keepwhite {
 	background-color: white;
 }
