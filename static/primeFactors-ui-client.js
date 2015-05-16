@@ -19,8 +19,9 @@ var dummy = function(){
 										return resp.number + ' is not a number';
 									}
 									return resp.error;
+								} else {
+									return resp.number + ' = ' + resp.decomposition.join(' x ');
 								}
-								return resp.number + ' = ' + resp.decomposition.join(' x ');
 							};
 						try {
 							resp = JSON.parse(req.responseText);
