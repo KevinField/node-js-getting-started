@@ -6,8 +6,8 @@ var dummy = function(){
 	Element.prototype.$ = function(selector) { return this.querySelector(selector); }
 	Element.prototype.$$ = function(selector) { return this.querySelectorAll(selector); }
 	window.load = function(){
-		var checkBombs = function (e) {
-			var et = e.target;
+		window.checkBombs = function (e) {
+			var et = e;
 			if (et.classList.contains('bomb')) {
 				et.className += ' lost';
 			} else {
@@ -36,7 +36,7 @@ var dummy = function(){
 							var cell = _('cell-' + i + 'x' + j);
 							if (cell) {
 								if (!cell.classList.contains('safe')) {
-									checkBombs({target:cell});
+									checkBombs(cell);
 								}
 							}
 						}
@@ -44,24 +44,31 @@ var dummy = function(){
 				}
 			}
 		};
-		var grid = document.grid,
-			docfrag = document.createDocumentFragment();
+		var grid = document.grid;
 		if (!grid) return;
+		_('grid').innerHTML='';
 		for (var n=1; n<=grid.length; n++) {
 			var row = grid[n-1];
 			for (var p=1; p<=row.length; p++) {
-				var cell = document.createElement('span');
-				cell.id = "cell-" + n + "x" + p;
-				cell.className = row[p-1];
-				cell.addEventListener('click',checkBombs);
-				docfrag.appendChild(cell);
+				var cell = "<span id='cell-" + n + "x" + p
+				+ "' class='" + row[p-1]
+				+ "' onclick='checkBombs(this)'>";
+				_('grid').innerHTML+=cell;
 			}
-			docfrag.appendChild(document.createElement('br'));
-		}_('grid')
-		var newElement = _('grid').cloneNode();
-		newElement.innerHTML = "";
-		newElement.appendChild(docfrag);
-		_('grid').parentNode.replaceChild(newElement, _('grid'));
+			_('grid').innerHTML+='<br>';
+		}
 	};
-
+	window.addEventListener('DOMContentLoaded',function(){
+		document.grid =    [
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+			];
+			load();
+	});
 }();
