@@ -32,6 +32,7 @@ var dummy = function(){
 				} else {
 					for (var i=n-1; i<=n+1; i++) {
 						for (var j=p-1; j<=p+1; j++) {
+							if (p===j && n===i) continue;
 							var cell = _('cell-' + i + 'x' + j);
 							if (cell) {
 								if (!cell.classList.contains('safe')) {
@@ -56,9 +57,11 @@ var dummy = function(){
 				docfrag.appendChild(cell);
 			}
 			docfrag.appendChild(document.createElement('br'));
-		}
-		_('grid').innerHTML='';
-		_('grid').appendChild(docfrag);
+		}_('grid')
+		var newElement = _('grid').cloneNode();
+		newElement.innerHTML = "";
+		newElement.appendChild(docfrag);
+		_('grid').parentNode.replaceChild(newElement, _('grid'));
 	};
 	window.addEventListener('DOMContentLoaded',function(){
 		document.grid =    [
