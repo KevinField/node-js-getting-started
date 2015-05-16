@@ -60,4 +60,17 @@ var dummy = function(){
 		_('grid').innerHTML='';
 		_('grid').appendChild(docfrag);
 	};
+	window.addEventListener('DOMContentLoaded',function(){
+		document.grid =    [
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+			];
+			load();
+	});
 }();
