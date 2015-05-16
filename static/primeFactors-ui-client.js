@@ -20,7 +20,11 @@ var dummy = function(){
 									}
 									return resp.error;
 								} else {
-									return resp.number + ' = ' + resp.decomposition.join(' x ');
+									if (resp.decomposition) {
+										return resp.number + ' = ' + resp.decomposition.join(' x ');
+									} else {
+										return 'No error, but no decomp either.  (?)';
+									}
 								}
 							};
 						try {
@@ -40,6 +44,7 @@ var dummy = function(){
 								  docfrag.appendChild(li);
 								});
 								_('results').appendChild(docfrag);
+								return;
 							} else {
 								resp = {
 									error: 'An uncaught error occurred: no decomposition',
