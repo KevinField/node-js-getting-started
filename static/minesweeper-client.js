@@ -56,7 +56,7 @@ var dummy = function(){
 			for (var p=1; p<=row.length; p++) {
 				var cell = document.createElement('span');
 				cell.id = "cell-" + n + "x" + p;
-				cell.className = row[p-1] + ((row[p-1]==='bomb')?' lost':' empty');
+				cell.className = row[p-1];
 				docfrag.appendChild(cell);
 			}
 			docfrag.appendChild(document.createElement('br'));
