@@ -60,6 +60,13 @@ var dummy = function(){
 		}
 		_('grid').innerHTML = "";
 		_('grid').appendChild(docfrag);
+		for (var n=1; n<=grid.length; n++) {
+			var row = grid[n-1];
+			for (var p=1; p<=row.length; p++) {
+				var cell = _("cell-" + n + "x" + p);
+				cell.addEventListener('click',checkBombs);
+			}
+		}
 	};
 	window.addEventListener('DOMContentLoaded',function(){
 		return;
