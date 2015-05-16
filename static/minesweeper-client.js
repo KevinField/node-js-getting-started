@@ -72,17 +72,16 @@ var dummy = function(){
 		}
 	};
 	window.addEventListener('DOMContentLoaded',function(){
-		//return;
-		document.grid =    [
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
-			];
-			load();
+		document.grid = [];
+		var rows = Math.round(Math.random()*12)+3,
+			cols = Math.round(Math.random()*12)+3;
+		for (var i=0; i<rows; i++) {
+			var row = [];
+			for (var j=0; j<cols; j++) {
+				row[j] = Math.random() > 0.7 ? 'bomb' : 'empty';
+			}
+			document.grid.push(row);
+		}
+		load();
 	});
 }();
