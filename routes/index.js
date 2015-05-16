@@ -10,7 +10,8 @@ module.exports = {
 	  	+'<p><a href="https://github.com/KevinField/node-js-getting-started/#readme" id="repository-link">my repo</a></p>'
 	  	+'<pre>Some faces:\n'+result+'</pre>'
 	  	+"<p>Also, you can <a href='http://kevinjamesfield.blogspot.com/' id='contact-me-link'>contact me</a>.</p>"
-	  	+"<p>Or go go go go <a href='/ping' id='ping-challenge-link'>go ping</a>.</p>"	
+	  	+"<p>Or go go go go <a href='/ping' id='ping-challenge-link'>go ping</a>.</p>"
+	  	+"<p>Unless you wanna <a href='/minesweeper' id='minesweeper-link'>sweep some mines</a>.</p>"
 	  );
     }
 };
