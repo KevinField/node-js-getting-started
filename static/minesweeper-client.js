@@ -6,8 +6,8 @@ var dummy = function(){
 	Element.prototype.$ = function(selector) { return this.querySelector(selector); }
 	Element.prototype.$$ = function(selector) { return this.querySelectorAll(selector); }
 	window.load = function(){
-		window.checkBombs = function (e) {
-			var et = e;
+		var checkBombs = function (e) {
+			var et = e.target;
 			if (et.classList.contains('bomb')) {
 				et.className += ' lost';
 			} else {
@@ -36,7 +36,7 @@ var dummy = function(){
 							var cell = _('cell-' + i + 'x' + j);
 							if (cell) {
 								if (!cell.classList.contains('safe')) {
-									checkBombs(cell);
+									checkBombs({target:cell});
 								}
 							}
 						}
@@ -44,21 +44,25 @@ var dummy = function(){
 				}
 			}
 		};
-		var grid = document.grid;
+		var grid = document.grid,
+			docfrag = document.createDocumentFragment();
 		if (!grid) return;
-		_('grid').innerHTML='';
 		for (var n=1; n<=grid.length; n++) {
 			var row = grid[n-1];
 			for (var p=1; p<=row.length; p++) {
-				var cell = "<span id='cell-" + n + "x" + p
-				+ "' class='" + row[p-1]
-				+ "' onclick='checkBombs(this)'>";
-				_('grid').innerHTML+=cell;
+				var cell = document.createElement('span');
+				cell.id = "cell-" + n + "x" + p;
+				cell.className = row[p-1];
+				cell.addEventListener('click',checkBombs);
+				docfrag.appendChild(cell);
 			}
-			_('grid').innerHTML+='<br>';
+			docfrag.appendChild(document.createElement('br'));
 		}
+		_('grid').innerHTML = "";
+		_('grid').appendChild(docfrag);
 	};
 	window.addEventListener('DOMContentLoaded',function(){
+		return;
 		document.grid =    [
 				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
 				['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
