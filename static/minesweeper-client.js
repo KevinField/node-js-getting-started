@@ -30,8 +30,12 @@ var dummy = function(){
 					et.textContent = bombs;
 					et.className += ' keepwhite';
 				} else {
+					var gridHeight = document.grid.length,
+						gridWidth = document.grid[0].length;
 					for (var i=n-1; i<=n+1; i++) {
 						for (var j=p-1; j<=p+1; j++) {
+							if (p < 1 || p > gridWidth) continue;
+							if (n < 1 || n > gridHeight) continue;
 							if (p===j && n===i) continue;
 							var cell = _('cell-' + i + 'x' + j);
 							if (cell) {
@@ -52,8 +56,7 @@ var dummy = function(){
 			for (var p=1; p<=row.length; p++) {
 				var cell = document.createElement('span');
 				cell.id = "cell-" + n + "x" + p;
-				cell.className = row[p-1];
-				cell.addEventListener('click',checkBombs);
+				cell.className = row[p-1] + ' wtf';
 				docfrag.appendChild(cell);
 			}
 			docfrag.appendChild(document.createElement('br'));
