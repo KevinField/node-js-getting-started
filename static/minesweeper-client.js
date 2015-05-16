@@ -82,6 +82,6 @@ var dummy = function(){
 			}
 			document.grid.push(row);
 		}
-		load();
+		window.load();
 	});
 }();
