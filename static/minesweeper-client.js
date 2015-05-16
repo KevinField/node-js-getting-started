@@ -62,10 +62,15 @@ var dummy = function(){
 	};
 	window.addEventListener('DOMContentLoaded',function(){
 		document.grid = [
-		    ['bomb' , 'empty', 'empty'],
-		    ['empty', 'empty', 'empty'],
-		    ['empty', 'empty', 'bomb' ]
-    	];
+			['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+			['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+			['empty', 'empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty'],
+			['empty', 'empty', 'empty', 'empty', 'bomb' , 'empty', 'empty', 'empty'],
+			['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+			['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+			['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+			['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty'],
+		];
 		load();
 	});
 }();
