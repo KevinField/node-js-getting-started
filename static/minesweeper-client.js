@@ -74,11 +74,17 @@ var dummy = function(){
 	window.addEventListener('DOMContentLoaded',function(){
 		document.grid = [];
 		var rows = 8,
-			cols = 8;
+			cols = 8,
+			bombsLeft = 5;
 		for (var i=0; i<rows; i++) {
 			var row = [];
 			for (var j=0; j<cols; j++) {
-				row[j] = Math.random() > 0.7 ? 'bomb' : 'empty';
+				if (Math.random() < (bombsLeft / (((rows-i)*cols)-j)) && bombsLeft > 0) {
+					row[j] = 'bomb';
+					bombsLeft--;
+				} else {
+					row[j] = 'empty';
+				}
 			}
 			document.grid.push(row);
 		}
