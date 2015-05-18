@@ -5,6 +5,23 @@ var dummy = function(){
 	Element.prototype.$ = function(selector) { return this.querySelector(selector); }
 	Element.prototype.$$ = function(selector) { return this.querySelectorAll(selector); }
 	window.addEventListener('DOMContentLoaded',function(){
+		var processResult = function (resp) {
+			if (resp.error) {
+				if (resp.error === 'not a number') {
+					return resp.number + ' is not a number';
+				}
+				return resp.error;
+			} else {
+				if (resp.decomposition) {
+					return resp.number + ' = ' + resp.decomposition.join(' x ');
+				} else {
+					return 'No error, but no decomp either.  (?)';
+				}
+			}
+		};
+		if (window.primeFactors && window.primeFactors.last) {
+			_('last-decomposition').innerHTML = processResult(window.primeFactors.last);
+		}
 		_('go').addEventListener('click',function() {
 			var url = '/primeFactors/',
 				parameters = 'number=' + _('number').value;
@@ -12,21 +29,7 @@ var dummy = function(){
 			req.onreadystatechange = function () {
 				if (req.readyState == 4) {
 					if (req.status == 200) {
-						var resp = {},
-							processResult = function (resp) {
-								if (resp.error) {
-									if (resp.error === 'not a number') {
-										return resp.number + ' is not a number';
-									}
-									return resp.error;
-								} else {
-									if (resp.decomposition) {
-										return resp.number + ' = ' + resp.decomposition.join(' x ');
-									} else {
-										return 'No error, but no decomp either.  (?)';
-									}
-								}
-							};
+						var resp = {};
 						try {
 							resp = JSON.parse(req.responseText);
 						} catch(e) {

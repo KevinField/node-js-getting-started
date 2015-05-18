@@ -9,7 +9,8 @@
   "dependencies": {
     "express": "~4.9.x",
     "cool-ascii-faces": "~1.3.x",
-    "express-routescan": "~0.2.1"
+    "express-routescan": "~0.2.1",
+    "node-persist": ""
   },
   "engines": {
     "node": "0.12.2"
