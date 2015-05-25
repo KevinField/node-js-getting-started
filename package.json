@@ -11,7 +11,12 @@
     "cool-ascii-faces": "~1.3.x",
     "express-routescan": "~0.2.1",
     "node-persist": "",
+    "expresso": "",
     "zombie": ""
+  },
+  "devDependencies": {
+    "coveralls": "latest",
+    "mocha-lcov-reporter": "latest" 
   },
   "engines": {
     "node": "0.12.2"
