@@ -12,7 +12,8 @@ module.exports = {
 	  	+"<p>Also, you can <a href='http://kevinjamesfield.blogspot.com/' id='contact-me-link'>contact me</a>.</p>"
 	  	+"<p>Or go go go go <a href='/ping' id='ping-challenge-link'>go ping</a>.</p>"
 	  	+"<p>Unless you wanna <a href='/minesweeper' id='minesweeper-link'>sweep some mines</a>.</p>"
-	  	+"<p>There's always <a href='/primeFactors/ui' id='prime-factors-decomposition-link'>rot</a> too.</p>"	  	
+	  	+"<p>There's always <a href='/primeFactors/ui' id='prime-factors-decomposition-link'>rot</a> too.</p>"
+	  	+"<p>Meanwhile, is my build passing?  <img src='https://travis-ci.org/KevinField/node-js-getting-started.svg'></p>"
 	  );
     }
 };
