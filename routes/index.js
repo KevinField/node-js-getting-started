@@ -14,6 +14,7 @@ module.exports = {
 	  	+"<p>Unless you wanna <a href='/minesweeper' id='minesweeper-link'>sweep some mines</a>.</p>"
 	  	+"<p>There's always <a href='/primeFactors/ui' id='prime-factors-decomposition-link'>rot</a> too.</p>"
 	  	+"<p>Meanwhile, is my build passing?  <img src='https://travis-ci.org/KevinField/node-js-getting-started.svg'></p>"
+	  	+"<p>I wonder if I push this to Travis CI whether it will automatically deploy to Heroku.  Hopefully not, right?</p>"
 	  );
     }
 };

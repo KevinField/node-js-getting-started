@@ -1,5 +1,12 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "iojs"
-  - "iojs-v1.0.4"
+- '0.12'
+- iojs
+- iojs-v1.0.4
+deploy:
+  provider: heroku
+  api_key:
+    secure: a0iUnvaEN5q7dOIuo/RAbcB/N0GKpZgJw9b0hTpTPrENtXXCsckNlKkU+FidRzmnrfdUWjrdjTe1yCDt3PSwc8Ae6NU/0hzXXgDvCpNigK7hA8NJvpnPXH6AuG65jrjbMt+0bkeIvcc413S772GIZ2QpikaNDUAE/aFygnENBgURlCf3COuWFWOcnDJac1ykoCEasUeYeA7j1TUnz9OEmQhNTEFYSK+m76skHFdplXAAkdyDV0x/mIMOwBwXbTQFYoNX3+mM88vQLX4VJ4xkNgUoRqs0J+/qTcfzsnLlm9YKg420uNoPM4UeV7JJhpMRvCICGxo45MfFqDgZP9JcjMnhHkr2SjYjJQMXzIPruFzwM0CVQNzQ6iMCfujGoK2OahwWpZJDouuWysZQdIjXTpU2E2JVVqgjdTxOC4FNCqmh692IDbXyFWi71vYtS2PsuGXH9pgQeMHsssbDdZmV4w6PgwUVq4iAelGh7wS78yfyOwjgciEcbkTeG6xBenIysvqE1fShNB21iK3a56VYHXtxDmWxNrfD3ib3se9pPiF7Ne6bLXNM/E2ak/Wa2+q71haPbK9OAsCwJ0mVkYQeEYLN25oJ8c4xCIaSJa1y5P4zEi1/tSZ84C++gyxR/+UZc4pz4R7A+2K6f9Gc+mJlFz0akSMBk/7LVZylEubwyZ4=
+  app: lit-castle-3030
+  on:
+    repo: KevinField/node-js-getting-started
