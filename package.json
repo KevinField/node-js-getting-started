@@ -26,7 +26,7 @@
     "express"
   ],
   "scripts": {
-    "test": "node_modules/expresso/bin/expresso"
+    "test": "./node_modules/expresso/bin/expresso"
   },
   "license": "MIT"
 }
